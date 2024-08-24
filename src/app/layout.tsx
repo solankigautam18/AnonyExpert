@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/context/AuthProvider";
 
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/ui/Navbar";
 import { SessionProvider } from "next-auth/react";
 
@@ -22,22 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-      <body className={inter.className}>
-        <Navbar />
-        {children}
-      <Toaster />
-      </body>
+        <body className={inter.className}>
+          <Navbar />
+          {children}
+          <Toaster />
+        </body>
       </AuthProvider>
     </html>
   );
 }
-
-
-
-
-
-
-
-
-
-
