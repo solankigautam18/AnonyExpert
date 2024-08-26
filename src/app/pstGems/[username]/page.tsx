@@ -73,16 +73,16 @@ const Page = () => {
         <Separator className="mt-5 mb-7" />
         <Card className="w-[350px]">
           <CardHeader>
-            <CardTitle>Create project</CardTitle>
-            <CardDescription>
+            {/* <CardTitle>Click on any message below to select it.</CardTitle> */}
+            {/* <CardDescription>
               Deploy your new project in one-click.
-            </CardDescription>
+            </CardDescription> */}
           </CardHeader>
-          <CardContent>
+          <CardContent className="">
             <form>
               <div className="grid w-full items-center gap-4">
                 <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="name">Name</Label>
+                  {/* <Label htmlFor="name">Name</Label> */}
                   <h1>Hello</h1>
                   <h1>Hello</h1>
                   <h1>Hello</h1>
