@@ -10,7 +10,7 @@ export async function GET(request: Request) {
 
   const session = await getServerSession(authOptions);
   const user: User = session?.user as User;
-  console.log("user", user);
+  // console.log("user", user);
 
   if (!session || !session.user) {
     return Response.json(
@@ -32,9 +32,9 @@ export async function GET(request: Request) {
     ]);
 
     const asd = await UserModel.findOne({ _id: userId });
-    console.log(asd);
+    // console.log(asd);
 
-    console.log("user1", user1);
+    // console.log("user1", user1);
 
     if (!user1 || user1.length === 0) {
       return Response.json(

@@ -87,3 +87,60 @@
 // }
 
 
+// import OpenAI from "openai";
+
+// const openai = new OpenAI();
+
+// async function main() {
+//   const completion = await openai.completions.create({
+//     model: "gpt-3.5-turbo-instruct",
+//     prompt: "Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous messaging platform called 'AnonyExpert', where users can ask sexual product experts questions anonymously. The questions should be suitable for a diverse audience, promoting open and respectful discussions about sexual health and wellness. Avoid explicit or overly personal topics, focusing instead on general curiosity, product inquiries, and wellness tips. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment. Include questions in English, Hindi, and Hinglish to cater to different language preferences. For example, your output should be structured like this: 'What are the benefits of using sexual wellness products regularly? || महिलाओं के लिए यौन स्वास्थ्य को बेहतर बनाने के लिए कौन-कौन से उपाय हैं? || Sexual wellness products ke use ke fayde kya hain, aur inka koi side effect toh nahi?'",
+//     max_tokens: 30,
+//     temperature: 0,
+//   });
+
+//   console.log(completion);
+// }
+// main();
+
+
+import { NextRequest, NextResponse } from "next/server";
+import OpenAI from "openai";
+
+// Initialize OpenAI instance
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
+
+export async function POST(request: NextRequest) {
+  try {
+    // Call OpenAI API for the completion
+    const suggestions = await openai.completions.create({
+      model: "gpt-3.5-turbo-instruct",
+      prompt: `Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous messaging platform called 'AnonyExpert', where users can ask sexual product experts questions anonymously. The questions should be suitable for a diverse audience, promoting open and respectful discussions about sexual health and wellness. Avoid explicit or overly personal topics, focusing instead on general curiosity, product inquiries, and wellness tips. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment. Include questions in English, Hindi, and Hinglish to cater to different language preferences. For example, your output should be structured like this: 'What are the benefits of using sexual wellness products regularly? || महिलाओं के लिए यौन स्वास्थ्य को बेहतर बनाने के लिए कौन-कौन से उपाय हैं? || Sexual wellness products ke use ke fayde kya hain, aur inka koi side effect toh nahi?'`,
+      max_tokens: 300,
+      temperature: 0,
+    });
+
+    // Return the completion as a JSON response
+    return NextResponse.json(suggestions);
+  } catch (error) {
+    console.error("Error occurred while processing OpenAI request:", error);
+    return NextResponse.json(
+      { error: "An error occurred while generating the completion." },
+      { status: 500 }
+    );
+  }
+}
+
+
+
+// // Make sure to include these imports:
+// import { GoogleGenerativeAI } from "@google/generative-ai";
+// const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+// const prompt = "Write a story about a magic backpack.";
+
+// const result = await model.generateContent(prompt);
+// console.log(result.response.text());

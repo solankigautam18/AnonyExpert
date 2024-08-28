@@ -20,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" >
       <AuthProvider>
-        <body className={inter.className}>
+        <body className={`${inter.className} bg-black`}>
           <Navbar />
           {children}
           <Toaster />

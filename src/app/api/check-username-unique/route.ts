@@ -25,7 +25,7 @@ export async function GET(request: Request){
         }
         // validate with ZOD
        const result = UsernameQuerySchema.safeParse(queryParam)
-       console.log(result) // TODO: remove
+    //    console.log(result) // TODO: remove
 
        if(!result.success){
         // result.error.format gives all the zod errors, to further filter username?._erros is added ->

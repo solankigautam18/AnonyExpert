@@ -11,6 +11,7 @@
   "dependencies": {
     "-": "^0.0.1",
     "@ai-sdk/openai": "^0.0.53",
+    "@google/generative-ai": "^0.17.1",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
@@ -19,6 +20,7 @@
     "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.1",
     "@react-email/components": "^0.0.22",
+    "@tabler/icons-react": "^3.13.0",
     "ai": "^3.3.17",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
@@ -26,6 +28,7 @@
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.1.8",
     "embla-carousel-react": "^8.1.8",
+    "framer-motion": "^11.3.30",
     "lucide-react": "^0.417.0",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.1",
@@ -37,7 +40,7 @@
     "react-email": "^2.1.6",
     "react-hook-form": "^7.52.1",
     "resend": "^3.5.0",
-    "tailwind-merge": "^2.4.0",
+    "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "usehooks-ts": "^3.1.0",
     "zod": "^3.23.8"

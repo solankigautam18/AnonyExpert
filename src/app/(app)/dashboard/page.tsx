@@ -14,6 +14,7 @@ import { User } from "next-auth";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+// import { MacbookScroll } from "../../../components/ui/macbook-scroll"
 
 const Page = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -135,7 +136,7 @@ const Page = () => {
 
   //
 
-  console.log(messages);
+  // console.log(messages);
   return (
     <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
       <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>

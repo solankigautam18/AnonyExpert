@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     }
 
     // Add message to the user's messages array
-    console.log("content", content);
+    // console.log("content", content);
     const newMessage = { content };
     user.messages.push(newMessage as Message);
     await user.save();
