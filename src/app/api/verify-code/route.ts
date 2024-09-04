@@ -24,6 +24,7 @@ export async function POST(request: Request){
 
     //   user found
     const isCodeValid = user.verifyCode === code;
+    // console.log("code is: ", code);
     const isCodeNotExpired = new Date(user.verifyCodeExpiry) > new Date();
 
     if(isCodeValid && isCodeNotExpired){
