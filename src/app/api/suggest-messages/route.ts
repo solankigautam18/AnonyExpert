@@ -43,42 +43,42 @@
 
 
 
-// NEWWWWWW
+// // NEWWWWWW
 
-import OpenAI from "openai";
-import { NextResponse } from "next/server";
+// import OpenAI from "openai";
+// import { NextResponse } from "next/server";
 
-// Create an OpenAI client
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
+// // Create an OpenAI client
+// const openai = new OpenAI({
+//     apiKey: process.env.OPENAI_API_KEY,
+// });
 
-// Set the runtime to edge
-export const runtime = 'edge';
+// // Set the runtime to edge
+// export const runtime = 'edge';
 
-export async function POST(request: Request) {
-    try {
-        // Parse the request body if needed
-        const body = await request.json();
+// export async function POST(request: Request) {
+//     try {
+//         // Parse the request body if needed
+//         const body = await request.json();
 
-        // Define the prompt for the chat completion
-        const prompt = "Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous messaging platform called 'AnonyExpert', where users can ask sexual product experts questions anonymously. The questions should be suitable for a diverse audience, promoting open and respectful discussions about sexual health and wellness. Avoid explicit or overly personal topics, focusing instead on general curiosity, product inquiries, and wellness tips. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment. Include questions in English, Hindi, and Hinglish to cater to different language preferences. For example, your output should be structured like this: 'What are the benefits of using sexual wellness products regularly? || महिलाओं के लिए यौन स्वास्थ्य को बेहतर बनाने के लिए कौन-कौन से उपाय हैं? || Sexual wellness products ke use ke fayde kya hain, aur inka koi side effect toh nahi?'";
+//         // Define the prompt for the chat completion
+//         const prompt = "Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous messaging platform called 'AnonyExpert', where users can ask sexual product experts questions anonymously. The questions should be suitable for a diverse audience, promoting open and respectful discussions about sexual health and wellness. Avoid explicit or overly personal topics, focusing instead on general curiosity, product inquiries, and wellness tips. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment. Include questions in English, Hindi, and Hinglish to cater to different language preferences. For example, your output should be structured like this: 'What are the benefits of using sexual wellness products regularly? || महिलाओं के लिए यौन स्वास्थ्य को बेहतर बनाने के लिए कौन-कौन से उपाय हैं? || Sexual wellness products ke use ke fayde kya hain, aur inka koi side effect toh nahi?'";
 
-        // Make the API call
-        const response = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo',
-            messages: [{ role: 'user', content: prompt }],
-            max_tokens: 400,
-            stream: false,  // Use stream: true if you want to handle streaming responses
-        });
+//         // Make the API call
+//         const response = await openai.chat.completions.create({
+//             model: 'gpt-3.5-turbo',
+//             messages: [{ role: 'user', content: prompt }],
+//             max_tokens: 400,
+//             stream: false,  // Use stream: true if you want to handle streaming responses
+//         });
 
-        // Return the API response
-        return NextResponse.json(response);
-    } catch (error) {
-        console.error("An unexpected error occurred", error);
-        return NextResponse.json({ error: "An unexpected error occurred" }, { status: 500 });
-    }
-}
+//         // Return the API response
+//         return NextResponse.json(response);
+//     } catch (error) {
+//         console.error("An unexpected error occurred", error);
+//         return NextResponse.json({ error: "An unexpected error occurred" }, { status: 500 });
+//     }
+// }
 
 
 
@@ -189,3 +189,58 @@ export async function POST(request: Request) {
 
 // // const result = await model.generateContent(prompt);
 // // console.log(result.response.text());
+
+
+
+
+
+
+
+
+// import necessary dependencies
+import OpenAI from "openai";
+import { NextResponse } from "next/server";
+
+// create an OpenAI client
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
+
+
+// set the runtime to edge for best performance
+export const runtime = 'edge';
+
+export async function POST(request: Request) {
+    try {
+        const prompt = "Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous messaging platform called 'AnonyExpert', where users can ask questions anonymously. Include questions in English, Hindi, and Hinglish.";
+
+        // Ask OpenAI for a completion given the prompt
+        const response = await openai.completions.create({
+            model: 'gpt-3.5-turbo-instruct',
+            max_tokens: 400,
+            prompt,
+        });
+
+        const text = response.choices[0].text.trim();
+        const prompts = text.split("||").map((p) => p.trim());
+
+        // Return suggestions as a JSON response
+        return NextResponse.json({ prompt: prompts });
+    } catch (error) {
+        if (error instanceof OpenAI.APIError) {
+            const { name, status, headers, message } = error;
+            return NextResponse.json(
+                { name, status, headers, message },
+                { status }
+            );
+        } else {
+            console.error("An unexpected error occurred", error);
+            throw error;
+        }
+    }
+}
+
+
+
+
+
