@@ -217,25 +217,28 @@ export async function POST(request: Request) {
         // Ask OpenAI for a completion given the prompt
         const response = await openai.completions.create({
             model: 'gpt-3.5-turbo-instruct',
-            max_tokens: 400,
             prompt,
+            max_tokens: 400,
         });
 
-        const text = response.choices[0].text.trim();
+        const text = response.choices[0]?.text?.trim() || "";
         const prompts = text.split("||").map((p) => p.trim());
 
         // Return suggestions as a JSON response
-        return NextResponse.json({ prompt: prompts });
+        return NextResponse.json({ prompts });
     } catch (error) {
         if (error instanceof OpenAI.APIError) {
             const { name, status, headers, message } = error;
             return NextResponse.json(
-                { name, status, headers, message },
+                { error: {name, status, headers, message} },
                 { status }
             );
         } else {
             console.error("An unexpected error occurred", error);
-            throw error;
+        return NextResponse.json(
+            { error: "An unexpected error occurred" },
+            { status: 500 }
+            );
         }
     }
 }

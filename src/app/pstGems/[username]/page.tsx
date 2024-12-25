@@ -359,16 +359,13 @@
 
 
 
-
-
-
 "use client";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import { toast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import {
   Card,
@@ -392,7 +389,8 @@ const Page = () => {
         content: message,
         username,
       });
-      if (response.data.success) {
+
+      if (response.data?.success) {
         toast({
           title: "Message sent",
           description: "Message sent successfully.",
@@ -401,7 +399,7 @@ const Page = () => {
       } else {
         toast({
           title: "Error",
-          description: response.data.message || "Failed to send message.",
+          description: response.data?.message || "Failed to send message.",
         });
       }
     } catch (error) {
@@ -416,7 +414,7 @@ const Page = () => {
     setLoadingSuggestions(true);
     try {
       const response = await axios.post('/api/suggest-messages');
-      setSuggestions(response.data.prompt || []);
+      setSuggestions(response.data?.prompt || []);
     } catch (error) {
       toast({
         title: "Error",
@@ -426,10 +424,6 @@ const Page = () => {
       setLoadingSuggestions(false);
     }
   };
-
-  useEffect(() => {
-    fetchSuggestions();
-  }, []);
 
   const handleSuggestionClick = (prompt: string) => {
     setMessage(prompt);
@@ -482,8 +476,6 @@ const Page = () => {
                 ))
               )}
             </div>
-
-
           </CardContent>
           <CardFooter className="flex justify-between"></CardFooter>
         </Card>
@@ -493,4 +485,3 @@ const Page = () => {
 };
 
 export default Page;
-
