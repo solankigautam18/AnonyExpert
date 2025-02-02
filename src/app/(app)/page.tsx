@@ -111,49 +111,17 @@ const Home = () => {
       revealText="We've got the permanent solution."
       className="w-full max-w-4xl text-base text-white"
     />
-     <h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
+      <div className="flex-grow flex flex-col justify-center items-center sm:p-8 md:p-20 bg-black">
+      <h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
 
-     <p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
+      <p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
+      </div>
   </div>
-  <div >
+  {/* <div >
     <MacbookScroll />
-  </div>
+  </div> */}
 
-  <div>
-  <h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
-
-<p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
-
-<h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
-
-     <p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
-
-     <h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
-
-     <p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
-
-     <h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
-
-     <p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
-
-     <h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
-
-     <p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
-
-     <h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
-
-     <p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
-
-     <h1 className='text-4xl text-white md:text-4xl mt-20 font-bold '>Get the best Advice from our Product Experts, Anonymously.</h1>
-
-     <p className='mt-3 md:mt-8 text-base md:text-lg text-white'>Explore Anony-Expert - Where your identity remains a secret.</p>
-  </div>
-</main>
-
-
-
-
-    
+ </main>  
   </>
 
   )

@@ -480,7 +480,7 @@ const Page = () => {
           <CardFooter className="flex justify-between"></CardFooter>
         </Card>
       </div>
-    </div>
+    </div> 
   );
 };
 

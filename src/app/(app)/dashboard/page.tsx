@@ -89,7 +89,7 @@ const Page = () => {
     fetchAcceptMessage();
   }, [session, setValue, fetchAcceptMessage, fetchMessages]);
 
-  // handle switch change -> we know the user state acceptingmessage or not but have'nt changed it back.
+  // handle switch change -> we know the user state accepting message or not but have'nt changed it back.
   const handleSwitchChange = async () => {
     try {
       const response = await axios.post<ApiResponse>("/api/accept-messages", {

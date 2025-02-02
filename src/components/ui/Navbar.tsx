@@ -12,7 +12,8 @@ const Navbar = () => {
     const user: User = session?.user as User
 
   return (
-    <nav className='p-4 md:p-6 shadow-md bg-white'>
+    // bg-gradient-to-r from-black via-gray-900 to-black
+    <nav className='p-4 md:p-6 shadow-md bg-gradient-to-r from-black via-gray-900 to-black  text-white'>
         <div className='container mx-auto flex flex-col md:flex-row justify-between items-center'>
             <a className='text-xl font-bold mb-4 md:mb-0 ' href="#">Anony-Expert</a>
             {
